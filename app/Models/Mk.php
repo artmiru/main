@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Mk extends Model
 {
     use HasFactory;
-
+    protected $dates = ['date_time'];
 }

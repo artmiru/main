@@ -12,9 +12,11 @@ class MkController extends Controller
             ->join('teachers', 'mks.teacher_id', '=', 'teachers.id')
             ->join('prices', 'mks.price_id', '=', 'prices.id')
             ->get(['mks.date_time','mks.status', 'mk_pics.src','mk_pics.title','teachers.name','teachers.folder','prices.price']);
-//dd($mks);
-        return view('mk.sections.list',[
+
+//        dd($mks[0]);
+        return view('mk.page',[
             'mks'=>$mks,
         ]);
     }
+
 }
