@@ -17,12 +17,4 @@
 //$green: #38c172;
 //$teal: #4dc0b5;
 //$cyan: #6cb2eb;
-@include media-breakpoint-up(md) {
-    #mk-list img {
-        max-height: 240px;
-        max-width: 319px;
-    }
-}
-#mk-list h4 {
-    font-family: sans-serif;
-}
+
