@@ -6,11 +6,10 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-import Popper from '@popperjs/core/dist/umd/popper.js';
-
 try {
-    window.Popper = Popper;
+    window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
+
     require('bootstrap');
 } catch (e) {}
 

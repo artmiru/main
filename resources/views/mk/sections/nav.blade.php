@@ -17,7 +17,7 @@
         <div class="col-md-2">
             <ul class="nav justify-content-center bg-gradient">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-person-fill"></i> Личный кабинет</a>
+                    <a class="nav-link" href="login"><i class="bi bi-person-fill"></i> Личный кабинет</a>
                 </li>
             </ul>
         </div>
