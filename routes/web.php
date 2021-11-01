@@ -16,8 +16,8 @@ use \App\Http\Controllers\MkController;
 //Route::get('mk2', function () {
 //    return view('mk.list');
 //});
-Route::get('mk',[MkController::class,'index'])->name('mk');
+Route::get('mk',[MkController::class,'index']);
 
 Auth::routes();
 
-Route::get('/account', [App\Http\Controllers\AccountController::class, 'index'])->name('account');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
