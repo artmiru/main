@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Phone;
+use DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,8 +52,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'min:2', 'max:255'],
+            'family' => ['required', 'string', 'min:2', 'max:255'],
+            'phone' => ['required', 'string', 'min:11', 'max:12'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -64,10 +68,33 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
+            'username' => $this->generateUniqueCode(),
             'name' => $data['name'],
+            'family' => $data['family'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $this->PhoneCreate($data['phone'],$user->id);
+        return $user;
+    }
+
+    protected function PhoneCreate($phone,$user_id){
+
+        if($phone = DB::table('phones')->where('phone',$phone)->first()){
+            DB::table('phone_user')->insert(['user_id' => $user_id,'phone_id' => $phone->id]);
+        }else{
+            $phone = Phone::create(['phone' => $phone]);
+            DB::table('phone_user')->insert(['user_id' => $user_id,'phone_id' => $phone->id]);
+        }
+    }
+
+    public function generateUniqueCode()
+    {
+        do {
+            $code = random_int(10000, 99999);
+        } while (User::where("username", "=", $code)->first());
+
+        return $code;
     }
 }

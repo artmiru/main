@@ -17,6 +17,7 @@ use \App\Http\Controllers\MkController;
 //    return view('mk.list');
 //});
 Route::get('mk',[MkController::class,'index']);
+Route::get('/',[MkController::class,'index']);
 
 Auth::routes();
 
