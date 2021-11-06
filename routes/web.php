@@ -19,6 +19,8 @@ use \App\Http\Controllers\MkController;
 Route::get('mk',[MkController::class,'index']);
 Route::get('/',[MkController::class,'index']);
 
+//админ
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('art',[App\Http\Controllers\Admin\AdminController::class,'index']);
+Route::get('art/mk',[App\Http\Controllers\Admin\AdminController::class,'MkList']);

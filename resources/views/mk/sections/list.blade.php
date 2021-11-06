@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 @endif
-                @if ($loop->iteration == 20)
+                @if ($loop->iteration == 24)
                     @break
                 @endif
             @endforeach

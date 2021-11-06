@@ -8,7 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Phone extends Model
 {
     use HasFactory;
+
+    protected $table = 'phones';
     protected $fillable = [
-        'phone'
+        'phone',
     ];
+
+    /**
+     * Пользователи, принадлежащие к телефону.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
