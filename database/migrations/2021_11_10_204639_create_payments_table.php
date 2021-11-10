@@ -23,6 +23,7 @@ class CreatePaymentsTable extends Migration
             $table->integer('payment_id');
             $table->string('error_code');
             $table->timestamps();
+
         });
     }
 
