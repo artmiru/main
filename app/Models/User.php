@@ -13,7 +13,6 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'users';
-    protected $dateFormat = 'U';
 
     /**
      * The attributes that are mass assignable.
@@ -54,9 +53,13 @@ class User extends Authenticatable
     /**
      * Роли, принадлежащие пользователю.
      */
-    public function phones()
+    public function phone()
     {
-        return $this->belongsToMany(Phone::class);
+        return $this->belongsToMany(Phone::class,'phone_user','user_id','phone_id');
+    }
+    public function mk()
+    {
+        return $this->belongsToMany(Mk::class,'mk_user','user_id','mk_id');
     }
     public function getFullNameAttribute()
     {

@@ -17,8 +17,9 @@ class Phone extends Model
     /**
      * Пользователи, принадлежащие к телефону.
      */
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class,'phone_user','phone_id','user_id');
+
     }
 }

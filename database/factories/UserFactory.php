@@ -20,6 +20,9 @@ class UserFactory extends Factory
      *
      * @return array
      */
+
+    //php artisan tinker
+    //User::factory()->count(50)->create()
     public function definition()
     {
 
@@ -27,9 +30,9 @@ class UserFactory extends Factory
             'name' => $this->faker->firstName(),
             'family' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
+            'phone' => '+7921'.$this->faker->numberBetween(0000000, 9999999),
             'username' => $this->faker->numberBetween(10000, 90000),
             'comments'=> $this->faker->text($maxNbChars = 100),
-            'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];

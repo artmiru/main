@@ -15,8 +15,8 @@ class UserPhoneSeeder extends Seeder
     public function run()
     {
         for ($i = 0; $i < 50; $i++) {
-            DB::table('phone_user')->insert([
-                'phone_id' => random_int(01, 30),
+            DB::table('mk_user')->insert([
+                'mk_id' => random_int(01, 24),
                 'user_id' => random_int(01, 50),
                 'created_at' => now(),
                 'updated_at' => now()

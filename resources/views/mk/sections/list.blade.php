@@ -32,14 +32,14 @@
                 @if($mk->status == 1)
                     <div class="col-md-3 text-center">
                         <div class="bg-white shadow-sm pt-2 pb-4 h-100">
-                            <h4 class="m-0">"{{$mk->title}}"</h4>
+                            <h4 class="m-0">"{{$mk->mkpic->title}}"</h4>
                             <div class="mk-date mb-1">{{DateFormate($mk->date_time,'j M. (l) в H:i')}}</div>
-                            <a class="d-block mb-2" href="/img/mk/paintings/{{$mk->src}}.jpg">
-                                <img src="/img/mk/paintings/{{$mk->src}}_t.jpg" alt="" class="img-fluid">
+                            <a class="d-block mb-2" href="/img/mk/paintings/{{$mk->mkpic->src}}.jpg">
+                                <img src="/img/mk/paintings/{{$mk->mkpic->src}}_t.jpg" alt="" class="img-fluid">
                             </a>
-                            <div class="mk-teacher mb-2"><a href="/teacher/{{$mk->folder}}">{{$mk->name}}</a></div>
+                            <div class="mk-teacher mb-2"><a href="/teacher/{{$mk->teacher->folder}}">{{$mk->teacher->name}}</a></div>
                             <div class="mk-full-price">Стоимость: 2900&#x20bd;</div>
-                            <div class="mk-discount-price mb-2">При оплате заранее: <span class="fw-bold">{{$mk->price}}&#x20bd;</span>
+                            <div class="mk-discount-price mb-2">При оплате заранее: <span class="fw-bold">{{$mk->price->price}}&#x20bd;</span>
                             </div>
                             <div class="mk-places mb-2">Осталось
                                 <span class="border border-1">5</span> мест
@@ -48,9 +48,6 @@
                             <a href="#" class="mk-rules d-block"><small>условия записи на мастер-класс</small></a>
                         </div>
                     </div>
-                @endif
-                @if ($loop->iteration == 24)
-                    @break
                 @endif
             @endforeach
         </div>
