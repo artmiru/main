@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class VisitStatus extends Model
 {
     use HasFactory;
+
+    public function visits()
+    {
+        return $this->belongsToMany(Visit::class);
+    }
 }

@@ -1,0 +1,11 @@
+#mk-list-admin table thead th {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0 10px;
+    background-color: #f7f7f7;
+}
+.mk-title {
+    font-size: 1.5rem;
+    background-color: steelblue;
+    color: white;
+}

@@ -9,7 +9,7 @@ class MkController extends Controller
 {
     public function index(){
 
-        Mk::generateMkDates();
+//        Mk::generateMkDates();
         return view('mk.page',[
             'mks'=>Mk::getAllMks()
         ]);

@@ -13,6 +13,7 @@ class Phone extends Model
     protected $fillable = [
         'phone',
     ];
+    public $timestamps = false;
 
     /**
      * Пользователи, принадлежащие к телефону.
