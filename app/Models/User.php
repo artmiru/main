@@ -60,10 +60,10 @@ class User extends Authenticatable
     /**
      * Роли, принадлежащие пользователю.
      */
-    public function phone()
-    {
-        return $this->belongsToMany(Phone::class,'phone_user','user_id','phone_id');
-    }
+//    public function phone()
+//    {
+//        return $this->belongsToMany(Phone::class,'phone_user','user_id','phone_id');
+//    }
     public function mk()
     {
         return $this->belongsToMany(Mk::class,'visits','user_id','mk_id');

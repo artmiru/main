@@ -24,3 +24,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('art',[App\Http\Controllers\Admin\AdminController::class,'index']);
 Route::get('art/mk',[App\Http\Controllers\Admin\AdminController::class,'MkList']);
+Route::get('art/profile/{id}',[App\Http\Controllers\Admin\AdminController::class,'profile']);
+Route::get('dbupdate',[\App\Http\Controllers\DbUpdateController::class,'index']);

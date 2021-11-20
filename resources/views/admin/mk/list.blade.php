@@ -13,7 +13,7 @@
                 </div>
                 <div class="row">
                     <div class="table-responsive p-0">
-                        <table class="table align-middle table-bordered bg-white shadow-sm">
+                        <table class="table align-middle bg-white shadow-sm">
                             <thead>
                             <tr>
                                 <th style="width: 20px;">#</th>
@@ -27,7 +27,7 @@
                             @foreach($mk->visits as $visit)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$visit->family}} {{$visit->name}} {{$visit->patronymic}}</td>
+                                    <td><a href="profile/{{$visit->user_id}}">{{$visit->family}} {{$visit->name}} {{$visit->patronymic}}</a></td>
                                     <td>
                                         +{{$visit->phone}}
                                     </td>
@@ -36,6 +36,9 @@
 
                                             @if(isset($visit->stid))
                                                 <option value="{{$visit->stid}}">{{$visit->stitle}}</option>
+                                                @foreach($visit_statuses as $status)
+                                                    <option value="{{$status->id}}">{{$status->title}}</option>
+                                                @endforeach
                                             @else
                                                 @foreach($visit_statuses as $status)
                                                     <option value="{{$status->id}}">{{$status->title}}</option>

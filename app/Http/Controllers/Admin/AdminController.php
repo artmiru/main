@@ -11,19 +11,16 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-//    public function index()
-//    {
-//        return view('admin.index');
-//    }
-
-    public function profile()
+    public function profile($id = null)
     {
-
+        $visit = new Visit();
+        return view('admin.profile', [
+            'user' => User::find($id),
+            'visits' => $visit->visits($id)
+        ]);
     }
-
     public function MkList()
     {
-//        $this->updateVisitTable();
         $visit_statuses = VisitStatus::all();
         return view('admin.mk.list', [
             'mks' => Mk::getListOfUsersOnMk(),

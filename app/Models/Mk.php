@@ -62,10 +62,6 @@ class Mk extends Model
 
     protected function getListOfUsersOnMk()
     {
-//        return $this->with('mkpic', 'teacher', 'visits')
-//            ->where('date_time', '>', date('Y-m-d H:i:s'))
-//            ->orderBy('date_time')
-//            ->get();
         $mks = DB::table('mks')
             ->leftjoin('mk_pics', 'mks.pic_id', '=', 'mk_pics.id')
             ->leftJoin('teachers', 'mks.teacher_id', '=', 'teachers.id')
@@ -78,8 +74,9 @@ class Mk extends Model
             $collection[$mk->id]->visits = DB::table('visits')
                 ->leftJoin('visit_statuses', 'visits.visit_status_id', '=', 'visit_statuses.id')
                 ->leftJoin('users', 'visits.user_id', '=', 'users.id')
-                ->select('visits.comments','users.name','users.family','users.patronymic','users.phone', 'visit_statuses.id as stid','visit_statuses.title as stitle')
+                ->select('visits.comments','visits.user_id','users.name','users.family','users.patronymic','users.phone', 'visit_statuses.id as stid','visit_statuses.title as stitle')
                 ->where('visits.mk_id', '=', $mk->id)
+                ->where('visit_statuses.id','!=','4')
                 ->get();
         }
         return $collection;
