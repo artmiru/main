@@ -13,24 +13,23 @@ class AdminController extends Controller
 {
     public function profile($id = null)
     {
-        $visit = new Visit();
         return view('admin.profile', [
             'user' => User::find($id),
-            'visits' => $visit->visits($id)
+            'mk_visits' => Visit::getMkVisits($id),
+            'abonements' => Visit::getAbonements($id)
         ]);
     }
     public function MkList()
     {
-        $visit_statuses = VisitStatus::all();
         return view('admin.mk.list', [
             'mks' => Mk::getListOfUsersOnMk(),
-            'visit_statuses' => $visit_statuses
+            'courses' => Visit::coursesVisitsList(),
+            'visit_statuses' => VisitStatus::all()
         ]);
     }
 
     public function updateVisitTable()
     {
-
         DB::table('mks')->where('date_time','!=','000-00-00 00:00:00')
             ->lazyById()->each(function ($mk) {
 //                echo $mk->date_time.' - '.$mk->id.'<br>';
